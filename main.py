@@ -39,7 +39,7 @@ async def main():
         try:
             async with session.post(login_check, json=user_json) as resp:
                 logging.info(f'Authorization Response status: {resp.status}')
-                assert resp.status == good_code, "Authorization fail"
+                assert resp.status == good_code, f"Authorization fail, Response: {resp.text()}"
                 temp = await resp.json()
                 token = temp['response']['token']
                 logging.info(f'Authorization access pass, token: {token}')   
@@ -51,7 +51,7 @@ async def main():
         try:
             async with session.post(group, json=group_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
                 logging.info(f'Group add Response status: {resp.status}')
-                assert resp.status == good_code, "Group add fail"
+                assert resp.status == good_code, f"Group add fail, Response: {resp.text()}"
                 temp = await resp.json()
                 group_id = temp['response']['id']
                 logging.info(f'Group add pass, Group id: {group_id}') 
@@ -63,7 +63,7 @@ async def main():
         try:
             async with session.post(player, json=player_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
                 logging.info(f'Player add Response status: {resp.status}')
-                assert resp.status == good_code, "Player add fail"
+                assert resp.status == good_code, f"Player add fail, Response: {resp.text()}"
                 temp = await resp.json()
                 player_id = temp['response']['id']
                 logging.info(f'Player add pass, Player id: {player_id}')
@@ -81,7 +81,7 @@ async def main():
         try:
             async with session.put(player, params={'id': player_id}, json=player_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
                 logging.info(f'Player add to Group Response status: {resp.status}')
-                assert resp.status == good_code, "Player add to Group fail"
+                assert resp.status == good_code, f"Player add to Group fail, Response: {resp.text()}"
                 logging.info(f'Player add to Group pass, Player id: {player_id}, Group id: {group_id}')
         except Exception as error:
             logging.error(f'Player add to Group error: {error}')
@@ -91,7 +91,7 @@ async def main():
         try:
             async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
                 logging.info(f'Player delete Response status: {resp.status}')
-                assert resp.status == good_code, "Player delete fail"
+                assert resp.status == good_code, f"Player delete fail, Response: {resp.text()}"
                 logging.info('Player delete pass')
         except Exception as error:
             logging.error(f'Player delete error: {error}')
@@ -101,7 +101,7 @@ async def main():
         try:
             async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
                 logging.info(f'Group delete Response status: {resp.status}')
-                assert resp.status == good_code, "Group delete fail"
+                assert resp.status == good_code, f"Group delete fail, Response: {resp.text()}"
                 logging.info('Group delete pass')
         except Exception as error:
             logging.error(f'Group delete error: {error}')
