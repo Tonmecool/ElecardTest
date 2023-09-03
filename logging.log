@@ -1,0 +1,19 @@
+2023-09-03 17:48:58,730 DEBUG Using proactor: IocpProactor
+2023-09-03 17:48:58,735 INFO Authorization Request
+2023-09-03 17:48:59,321 INFO Authorization Response status: 200
+2023-09-03 17:48:59,322 INFO Authorization access pass, token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2OTM3MzgxMDAsImV4cCI6MTY5NDM0MjkwMCwicm9sZXMiOlsiUk9MRV9PUEVSQVRPUiIsIlJPTEVfR1VFU1QiXSwidXNlcm5hbWUiOiJvcGVyYXRvciIsInJvbGVfYWxpYXMiOiJPUEVSQVRPUiIsImxvY2FsZSI6bnVsbCwiaWQiOjJ9.MCzXXpk6EcpXsKXQVzEl0HLZcS68PM5tm2mkLG0G6eFbZA4XxTPNggN5_ut5QnLZfVF7Xib6obl7rrpSJwrEy4vUuA5dpQjRHeTCfxKEFbIRY5PWyfPkdtlUqSta2VMCbaodn26kJpwrBJ4WQIpwwfhMSyJMu_Iw284XHQXju4TuvZ340aCe_XoLs-uAl6fgCl0W2eYcsj5SMlZlXtvNS-aqNKhbEzPc3-EznYsltQ7fIcRUD7kANyaNCymmeShvXtVh1uvq1oPo_NhEw0bz1TnFtxEiI7ghccDNj9fmAqa9XB0Od8Ndhzau17tJQ5vKcAXOyL-qveMkAZIsLXqS0w
+2023-09-03 17:48:59,322 INFO Group add Request
+2023-09-03 17:48:59,443 INFO Group add Response status: 200
+2023-09-03 17:48:59,443 INFO Group add pass, Group id: 48
+2023-09-03 17:48:59,443 INFO Player add Request
+2023-09-03 17:48:59,552 INFO Player add Response status: 200
+2023-09-03 17:48:59,552 INFO Player add pass, Player id: 40
+2023-09-03 17:48:59,552 INFO Player add to Group Request
+2023-09-03 17:48:59,643 INFO Player add to Group Response status: 400
+2023-09-03 17:48:59,643 ERROR Player add to Group error: Player add to Group fail
+2023-09-03 17:48:59,644 INFO Player delete Request
+2023-09-03 17:48:59,753 INFO Player delete Response status: 200
+2023-09-03 17:48:59,753 INFO Player delete pass
+2023-09-03 17:48:59,753 INFO Group delete Request
+2023-09-03 17:48:59,853 INFO Group delete Response status: 200
+2023-09-03 17:48:59,853 INFO Group delete pass
