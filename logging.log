@@ -1,19 +1,19 @@
-2023-09-03 22:35:09,261 DEBUG Using proactor: IocpProactor
-2023-09-03 22:35:09,266 INFO Authorization Request
-2023-09-03 22:35:09,848 INFO Authorization Response status: 200
-2023-09-03 22:35:09,849 INFO Authorization access pass, token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2OTM3NTUyNzAsImV4cCI6MTY5NDM2MDA3MCwicm9sZXMiOlsiUk9MRV9PUEVSQVRPUiIsIlJPTEVfR1VFU1QiXSwidXNlcm5hbWUiOiJvcGVyYXRvciIsInJvbGVfYWxpYXMiOiJPUEVSQVRPUiIsImxvY2FsZSI6bnVsbCwiaWQiOjJ9.nYrlbAw8r0ATwbIfajRi7i_PiXVdHgxzhQq_Vt9j_AubXnMeljcuNN_hz00IfHyIX-9CtLMITegmx4xcmqsQS34rpJCy4AB2hxCsiGUV-1G2HcR0R1OfDnAtpz069_og1Jr7Owb4KeFAzBo_eC5d_lLr5MP1NeztL97aG2RbSpd3obz25aOgINPwrTB5u1o3CHigHUMzEEb4hOIfNhWhl-36Y4KvgQkaMvcOR2YqAWssGlY8zCNLdeakWewegO8YRKMsr1ECiJrATBquAuvDO5ABuoaUglMszJ_K3EDGTFI-jLUpt1s73BMDxOV7Blax70vDB-RzfUzE19ijnrkgFw
-2023-09-03 22:35:09,849 INFO Group add Request
-2023-09-03 22:35:09,954 INFO Group add Response status: 200
-2023-09-03 22:35:09,955 INFO Group add pass, Group id: 86
-2023-09-03 22:35:09,955 INFO Player add Request
-2023-09-03 22:35:10,058 INFO Player add Response status: 200
-2023-09-03 22:35:10,058 INFO Player add pass, Player id: 72
-2023-09-03 22:35:10,058 INFO Player add to Group Request
-2023-09-03 22:35:10,158 INFO Player add to Group Response status: 200
-2023-09-03 22:35:10,159 INFO Player add to Group pass, Player id: 72, Group id: 86
-2023-09-03 22:35:10,159 INFO Player delete Request
-2023-09-03 22:35:10,254 INFO Player delete Response status: 200
-2023-09-03 22:35:10,255 INFO Player delete pass
-2023-09-03 22:35:10,255 INFO Group delete Request
-2023-09-03 22:35:10,359 INFO Group delete Response status: 200
-2023-09-03 22:35:10,359 INFO Group delete pass
+2023-09-03 23:03:46,820 DEBUG Using proactor: IocpProactor
+2023-09-03 23:03:46,826 INFO Authorization Request
+2023-09-03 23:03:47,411 INFO Authorization Response status: 200
+2023-09-03 23:03:47,412 INFO Authorization access pass, token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2OTM3NTY5ODgsImV4cCI6MTY5NDM2MTc4OCwicm9sZXMiOlsiUk9MRV9PUEVSQVRPUiIsIlJPTEVfR1VFU1QiXSwidXNlcm5hbWUiOiJvcGVyYXRvciIsInJvbGVfYWxpYXMiOiJPUEVSQVRPUiIsImxvY2FsZSI6bnVsbCwiaWQiOjJ9.q64mq00j5mrTH7u1CqAJDXVS4sLjNP4UIQSIhM3VMlEyS1_hTVXHUJD5JqsOnj5wBjPSNiq8klHSLQEXR2heVYqnV8ESAJMaZUh2jOdoqtSzmRhG77Zwec7wjs9Cssxw-GXUNeW-7CkqmBt0XWfZxhN5EqyBSwWU37XqbbXV7iuAkjnUiTS6F2F_1fJrp6GwOnvHjG4gk542DF9iq22bcLjpeu5qu_rOgrBxbJYRf2uYB_H67Qfl_q1rLIu3i8IFi0jlGfp7QlcMxN6zyKyVvc8EWMJzQ3wL2vCwNNXynJO7TNN7dDXRobAVPo0gnpNY7BxqxopFhGct5r7dgf-fIQ
+2023-09-03 23:03:47,412 INFO Group add Request
+2023-09-03 23:03:47,538 INFO Group add Response status: 200
+2023-09-03 23:03:47,539 INFO Group add pass, Group id: 88
+2023-09-03 23:03:47,539 INFO Player add Request
+2023-09-03 23:03:47,645 INFO Player add Response status: 200
+2023-09-03 23:03:47,646 INFO Player add pass, Player id: 74
+2023-09-03 23:03:47,646 INFO Player add to Group Request
+2023-09-03 23:03:47,761 INFO Player add to Group Response status: 200
+2023-09-03 23:03:47,761 INFO Player add to Group pass, Player id: 74, Group id: 88
+2023-09-03 23:03:47,762 INFO Player delete Request
+2023-09-03 23:03:47,864 INFO Player delete Response status: 200
+2023-09-03 23:03:47,864 INFO Player delete pass
+2023-09-03 23:03:47,864 INFO Group delete Request
+2023-09-03 23:03:47,971 INFO Group delete Response status: 200
+2023-09-03 23:03:47,972 INFO Group delete pass

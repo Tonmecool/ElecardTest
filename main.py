@@ -4,6 +4,8 @@ import json
 import logging
 from datetime import datetime
 
+good_code = 200
+
 now = datetime.now()
 
 # Чтение и присвоение данных
@@ -24,8 +26,6 @@ with open('group_add.json') as f:
 with open('player_add.json') as f:
     player_add_json = json.load(f)
     player_add_json['name'] += datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-
-good_code = 200
 
 # Настройка логгера
 logging.basicConfig(level=logging.DEBUG, filename="logging.log", filemode="w",
