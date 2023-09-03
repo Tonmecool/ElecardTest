@@ -19,7 +19,7 @@
 
 ````
 {
-    "name": "eee",
+    "name": "Player ",
     "description": "eee",
     "mac": "111111111111",
     "mediaGroup": 1,
