@@ -2,6 +2,9 @@ import asyncio
 import aiohttp
 import json
 import logging
+from datetime import datetime
+
+now = datetime.now()
 
 # Чтение и присвоение данных
 with open('urls.json') as f:
@@ -16,9 +19,11 @@ with open('user.json') as f:
 
 with open('group_add.json') as f:
     group_add_json = json.load(f)
+    group_add_json['name'] += datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
 with open('player_add.json') as f:
     player_add_json = json.load(f)
+    player_add_json['name'] += datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
 good_code = 200
 
@@ -81,24 +86,24 @@ async def main():
         except Exception as error:
             logging.error(f'Player add to Group error: {error}')
 
-        # Удаление плеера
-        logging.info('Player delete Request')
-        try:
-            async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Player delete Response status: {resp.status}')
-                assert resp.status == good_code, "Player delete fail"
-                logging.info('Player delete pass')
-        except Exception as error:
-            logging.error(f'Player delete error: {error}')
+        # # Удаление плеера
+        # logging.info('Player delete Request')
+        # try:
+        #     async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
+        #         logging.info(f'Player delete Response status: {resp.status}')
+        #         assert resp.status == good_code, "Player delete fail"
+        #         logging.info('Player delete pass')
+        # except Exception as error:
+        #     logging.error(f'Player delete error: {error}')
 
-        # Удаление группы
-        logging.info('Group delete Request')
-        try:
-            async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Group delete Response status: {resp.status}')
-                assert resp.status == good_code, "Group delete fail"
-                logging.info('Group delete pass')
-        except Exception as error:
-            logging.error(f'Group delete error: {error}')
+        # # Удаление группы
+        # logging.info('Group delete Request')
+        # try:
+        #     async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
+        #         logging.info(f'Group delete Response status: {resp.status}')
+        #         assert resp.status == good_code, "Group delete fail"
+        #         logging.info('Group delete pass')
+        # except Exception as error:
+        #     logging.error(f'Group delete error: {error}')
 
 asyncio.run(main())
