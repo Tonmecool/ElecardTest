@@ -91,7 +91,7 @@ async def main():
         except Exception as error:
             logging.error(f'Player delete error: {error}')
 
-        # Удаление группыgi
+        # Удаление группы
         logging.info('Group delete Request')
         try:
             async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
