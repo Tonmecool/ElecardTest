@@ -86,24 +86,24 @@ async def main():
         except Exception as error:
             logging.error(f'Player add to Group error: {error}')
 
-        # # Удаление плеера
-        # logging.info('Player delete Request')
-        # try:
-        #     async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
-        #         logging.info(f'Player delete Response status: {resp.status}')
-        #         assert resp.status == good_code, "Player delete fail"
-        #         logging.info('Player delete pass')
-        # except Exception as error:
-        #     logging.error(f'Player delete error: {error}')
+        # Удаление плеера
+        logging.info('Player delete Request')
+        try:
+            async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
+                logging.info(f'Player delete Response status: {resp.status}')
+                assert resp.status == good_code, "Player delete fail"
+                logging.info('Player delete pass')
+        except Exception as error:
+            logging.error(f'Player delete error: {error}')
 
-        # # Удаление группы
-        # logging.info('Group delete Request')
-        # try:
-        #     async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
-        #         logging.info(f'Group delete Response status: {resp.status}')
-        #         assert resp.status == good_code, "Group delete fail"
-        #         logging.info('Group delete pass')
-        # except Exception as error:
-        #     logging.error(f'Group delete error: {error}')
+        # Удаление группы
+        logging.info('Group delete Request')
+        try:
+            async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
+                logging.info(f'Group delete Response status: {resp.status}')
+                assert resp.status == good_code, "Group delete fail"
+                logging.info('Group delete pass')
+        except Exception as error:
+            logging.error(f'Group delete error: {error}')
 
 asyncio.run(main())
