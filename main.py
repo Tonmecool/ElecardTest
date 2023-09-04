@@ -31,44 +31,87 @@ with open('player_add.json') as f:
 logging.basicConfig(level=logging.DEBUG, filename="logging.log", filemode="w",
                     format="%(asctime)s %(levelname)s %(message)s")
 
+
+# Авторизация + получение токена
+async def Authorization(session):
+    try:
+        async with session.post(login_check, json=user_json) as resp:
+            logging.info(f'Authorization Response status: {resp.status}')
+            assert resp.status == good_code, f"Authorization fail, Response: {resp.text()}"
+            temp = await resp.json()
+            token = temp['response']['token']
+            logging.info(f'Authorization access pass, token: {token}')
+            return token   
+    except Exception as error:
+        logging.critical(f'Authorization error: {error}')
+
+# Создание группы
+async def CreateGroup(session, token):
+    try:
+        async with session.post(group, json=group_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
+            logging.info(f'Group add Response status: {resp.status}')
+            assert resp.status == good_code, f"Group add fail, Response: {resp.text()}"
+            temp = await resp.json()
+            group_id = temp['response']['id']
+            logging.info(f'Group add pass, Group id: {group_id}') 
+            return group_id
+    except Exception as error:
+        logging.error(f'Group add error: {error}')
+
+# Удаление группы
+async def DeleteGroup(session, group_id, token):
+    try:
+        async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
+            logging.info(f'Group delete Response status: {resp.status}')
+            assert resp.status == good_code, f"Group delete fail, Response: {resp.text()}"
+            logging.info('Group delete pass')
+    except Exception as error:
+        logging.error(f'Group delete error: {error}')
+
+# Создание плеера
+async def CreatePlayer(session, token):
+    try:
+        async with session.post(player, json=player_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
+            logging.info(f'Player add Response status: {resp.status}')
+            assert resp.status == good_code, f"Player add fail, Response: {resp.text()}"
+            temp = await resp.json()
+            player_id = temp['response']['id']
+            logging.info(f'Player add pass, Player id: {player_id}')
+            return player_id
+    except Exception as error:
+        logging.error(f'Player add error: {error}')
+
+# Добавление плеера в группу 
+async def PlayerToGroup(session, player_id, group_id, token):
+    try:
+        async with session.put(player, params={'id': player_id}, json=player_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
+            logging.info(f'Player add to Group Response status: {resp.status}')
+            assert resp.status == good_code, f"Player add to Group fail, Response: {resp.text()}"
+            logging.info(f'Player add to Group pass, Player id: {player_id}, Group id: {group_id}')
+    except Exception as error:
+        logging.error(f'Player add to Group error: {error}')
+
+# Удаление плеера
+async def DeletePlayer(session, player_id, token):
+    try:
+        async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
+            logging.info(f'Player delete Response status: {resp.status}')
+            assert resp.status == good_code, f"Player delete fail, Response: {resp.text()}"
+            logging.info('Player delete pass')
+    except Exception as error:
+        logging.error(f'Player delete error: {error}')
+
 # Основные действия скрипта
 async def main():
     async with aiohttp.ClientSession(url) as session:
-        # Авторизация + получение токена
         logging.info('Authorization Request')
-        try:
-            async with session.post(login_check, json=user_json) as resp:
-                logging.info(f'Authorization Response status: {resp.status}')
-                assert resp.status == good_code, f"Authorization fail, Response: {resp.text()}"
-                temp = await resp.json()
-                token = temp['response']['token']
-                logging.info(f'Authorization access pass, token: {token}')   
-        except Exception as error:
-            logging.critical(f'Authorization error: {error}')
+        token = await Authorization(session)
 
-        # Создание группы
         logging.info('Group add Request')
-        try:
-            async with session.post(group, json=group_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Group add Response status: {resp.status}')
-                assert resp.status == good_code, f"Group add fail, Response: {resp.text()}"
-                temp = await resp.json()
-                group_id = temp['response']['id']
-                logging.info(f'Group add pass, Group id: {group_id}') 
-        except Exception as error:
-            logging.error(f'Group add error: {error}')
+        group_id = await CreateGroup(session, token)
 
-        # Создание плеера
         logging.info('Player add Request')
-        try:
-            async with session.post(player, json=player_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Player add Response status: {resp.status}')
-                assert resp.status == good_code, f"Player add fail, Response: {resp.text()}"
-                temp = await resp.json()
-                player_id = temp['response']['id']
-                logging.info(f'Player add pass, Player id: {player_id}')
-        except Exception as error:
-            logging.error(f'Player add error: {error}')
+        player_id = await CreatePlayer(session, token)
 
         # Изменение ID группы
         try:
@@ -76,34 +119,13 @@ async def main():
         except Exception as error:
             logging.error(f'Group id error: {error}')
 
-        # Добавление плеера в группу    
         logging.info('Player add to Group Request')
-        try:
-            async with session.put(player, params={'id': player_id}, json=player_add_json, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Player add to Group Response status: {resp.status}')
-                assert resp.status == good_code, f"Player add to Group fail, Response: {resp.text()}"
-                logging.info(f'Player add to Group pass, Player id: {player_id}, Group id: {group_id}')
-        except Exception as error:
-            logging.error(f'Player add to Group error: {error}')
+        await PlayerToGroup(session, player_id, group_id, token)
 
-        # Удаление плеера
         logging.info('Player delete Request')
-        try:
-            async with session.delete(player, params={'id': player_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Player delete Response status: {resp.status}')
-                assert resp.status == good_code, f"Player delete fail, Response: {resp.text()}"
-                logging.info('Player delete pass')
-        except Exception as error:
-            logging.error(f'Player delete error: {error}')
+        await DeletePlayer(session, player_id, token)
 
-        # Удаление группы
         logging.info('Group delete Request')
-        try:
-            async with session.delete(group, params={'id': group_id}, headers={'Authorization': f'Bearer {token}'}) as resp:
-                logging.info(f'Group delete Response status: {resp.status}')
-                assert resp.status == good_code, f"Group delete fail, Response: {resp.text()}"
-                logging.info('Group delete pass')
-        except Exception as error:
-            logging.error(f'Group delete error: {error}')
+        await DeleteGroup(session, group_id, token)
 
 asyncio.run(main())
